@@ -8,7 +8,7 @@ import Notification from '@site/src/components/Notification';
 import {setClipBoardText} from '@site/src/utils/functions';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-import React, {JSX, useState } from 'react';
+import React, {JSX, useState} from 'react';
 
 // @ts-ignore
 import github from '@site/static/img/icons/github.png';
@@ -18,7 +18,7 @@ import email from '@site/static/img/icons/mail.png';
 import favicon from '@site/static/img/favicon.png';
 
 function HomepageHeader() {
-  const [show, setShow] = useState<boolean>(false)
+    const [show, setShow] = useState<boolean>(false)
     const copySuccess = (): void => {
         setShow(true)
         if (!show) {
@@ -27,26 +27,26 @@ function HomepageHeader() {
             }, 4000)
         }
     }
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx(styles.heroBanner)}>
-        <div className={clsx(styles.heroTextContainer)}>
-            <div className={styles.avatarArea}>
-                <img
-                    src={favicon}
-                    alt="qscbm187531"
-                />
-            </div>
+    const {siteConfig} = useDocusaurusContext();
+    return (
+        <header className={clsx(styles.heroBanner)}>
+            <div className={clsx(styles.heroTextContainer)}>
+                <div className={styles.avatarArea}>
+                    <img
+                        src={favicon}
+                        alt="qscbm187531"
+                    />
+                </div>
 
-            <div className={styles.heroTextArea}>
-                <Heading as="h1" className="hero__title">
-                    {siteConfig.title}
-                </Heading>
-                <p className="hero__subtitle" style={{margin:"0"}}>{siteConfig.tagline}</p>
-                <p className="hero__subtitle" style={{fontSize:"18px",margin:"0"}}>A postive person</p>
-            </div>
-            <div className={styles.navLinkIconArea}>
-            <ContactMeBtn
+                <div className={styles.heroTextArea}>
+                    <Heading as="h1" className="hero__title">
+                        {siteConfig.title}
+                    </Heading>
+                    <p className="hero__subtitle" style={{margin: "0"}}>{siteConfig.tagline}</p>
+                    <p className="hero__subtitle" style={{fontSize: "18px", margin: "0"}}>A postive person</p>
+                </div>
+                <div className={styles.navLinkIconArea}>
+                    <ContactMeBtn
                         title="github"
                         src={github}
                         link="https://github.com/mcchampions"
@@ -65,8 +65,8 @@ function HomepageHeader() {
                     changeShow={setShow}
                 />
             </div>
-    </header>
-);
+        </header>
+    );
 }
 
 export default function Home() {

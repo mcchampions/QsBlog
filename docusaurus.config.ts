@@ -56,30 +56,53 @@ const config: Config = {
                     onUntruncatedBlogPosts: 'warn',
                 },
                 theme: {
-                    customCss: './src/css/custom.css',
+                    customCss: './src/css/custom.scss',
                 },
             } satisfies Preset.Options,
         ],
+    ],
+
+    plugins: [
+        'docusaurus-plugin-sass',
     ],
 
     themeConfig: {
         // Replace with your project's social card
         image: 'img/docusaurus-social-card.jpg',
         navbar: {
-            title: 'My Site',
+            title: 'qscbm187531\'s Website',
             logo: {
-                alt: 'My Site Logo',
-                src: 'img/logo.svg',
+                alt: 'qscbm187531\'s Website Logo',
+                src: 'img/favicon.png',
             },
             items: [
                 {
-                    type: 'docSidebar',
-                    sidebarId: 'tutorialSidebar',
+                    type: 'dropdown',
+                    sidebarId: 'docs',
                     position: 'left',
-                    label: 'Tutorial',
+                    label: 'Docs',
+                    className: 'header-docs-link',
+                    items: [
+                        {
+                            type: 'doc',
+                            docId: 'tutorial-basics/congratulations',
+                            label: '1',
+                        },
+                        {
+                            type: 'doc',
+                            docId: 'tutorial-extras/translate-your-site',
+                            label: '2',
+                        },
+                    ]
                 },
-                {to: '/blog', label: 'Blog', position: 'left'},
                 {
+                    className: "header-blog-link",
+                    to: '/blog',
+                    label: 'Blog',
+                    position: 'left'
+                },
+                {
+                    className: "header-github-link",
                     href: 'https://github.com/mcchampions/QsWebsite',
                     label: 'GitHub',
                     position: 'right',

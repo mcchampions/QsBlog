@@ -85,13 +85,18 @@ const config: Config = {
                     items: [
                         {
                             type: 'doc',
-                            docId: 'tutorial-basics/congratulations',
-                            label: '1',
+                            docId: 'java-dev/index',
+                            label: 'Java 开发指南',
                         },
                         {
                             type: 'doc',
-                            docId: 'tutorial-extras/translate-your-site',
-                            label: '2',
+                            docId: 'mc-plugin-dev/index',
+                            label: 'Bukkit 插件开发指南',
+                        },
+                        {
+                            type: 'doc',
+                            docId: 'mc-plugin-dev/index',
+                            label: '个人网站建站指南',
                         },
                     ]
                 },
@@ -113,36 +118,40 @@ const config: Config = {
             style: 'dark',
             links: [
                 {
-                    title: 'Docs',
+                    title: '文档',
                     items: [
                         {
-                            label: 'Tutorial',
-                            to: '/docs/intro',
+                            label: 'Java 开发指南',
+                            to: '/docs/java-dev',
+                        },
+                        {
+                            label: 'Bukkit 插件开发指南',
+                            to: '/docs/mc-plugin-dev',
+                        },
+                        {
+                            label: 'Docusaurus 建站指南',
+                            to: '/docs/web-dev',
                         },
                     ],
                 },
                 {
-                    title: 'Community',
+                    title: '联系我',
                     items: [
                         {
-                            label: 'Stack Overflow',
-                            href: 'https://stackoverflow.com/',
+                            label: 'QQ: 1309635304',
+                            to: "/",
                         },
                         {
-                            label: 'Discord',
-                            href: 'https://discordapp.com/',
-                        },
-                        {
-                            label: 'X',
-                            href: 'https://x.com/',
+                            label: '邮箱: qscbm187531@outlook.com',
+                            to: "/",
                         },
                     ],
                 },
                 {
-                    title: 'More',
+                    title: '其它',
                     items: [
                         {
-                            label: 'Blog',
+                            label: '我的博客',
                             to: '/blog',
                         },
                         {
@@ -153,6 +162,16 @@ const config: Config = {
                 },
             ],
             copyright: `Copyright © ${new Date().getFullYear()} QsWebsite, Inc. Built with Docusaurus.`,
+        },
+        docs: {
+            sidebar: {
+                hideable: true,
+            }
+        },
+        colorMode: {
+            defaultMode: 'light',
+            disableSwitch: false,
+            respectPrefersColorScheme: false,
         },
         prism: {
             theme: prismThemes.github,

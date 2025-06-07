@@ -3,7 +3,7 @@ title: "我的个人网站成功部署了!"
 slug: "website-finish"
 authors: [qscbm187531]
 hide_table_of_contents: false
-description: "我的感想."
+description: "分享我的感想以及计划."
 ---
 经历了一天的努力, 终于成功部署了我的个人网站.
 <!-- truncate -->

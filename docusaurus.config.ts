@@ -138,6 +138,10 @@ const config: Config = {
                     title: '联系我',
                     items: [
                         {
+                            label: '哔哩哔哩:65959464',
+                            href: 'https://space.bilibili.com/65959464',
+                        },
+                        {
                             label: 'QQ: 1309635304',
                             to: "/",
                         },

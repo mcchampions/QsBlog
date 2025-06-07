@@ -3,15 +3,7 @@ export async function setClipBoardText(text: string): Promise<void> {
 }
 
 export function isMobile(): boolean {
-    const userAgent: string = navigator.userAgent.toUpperCase()
-    if (/IPHONE|IPOD/.test(userAgent) && /MOBILE/.test(userAgent)) {
-        return true
+    if (window.screen.width < 500) {
+        return true;
     }
-    if (/ANDROID/.test(userAgent) && /MOBILE/.test(userAgent)) {
-        return true
-    }
-    if (/IPAD/.test(userAgent) && /MOBILE/.test(userAgent)) {
-        return false
-    }
-    return false
 }

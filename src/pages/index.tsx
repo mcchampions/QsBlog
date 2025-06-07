@@ -7,6 +7,10 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
+
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Notification from '@site/src/components/Notification';
 import {isMobile, setClipBoardText} from '@site/src/utils/functions';
@@ -27,12 +31,12 @@ type HomepageHeaderProps = {
 }
 
 function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
-    const [show, setShow] = useState<boolean>(false)
-    const copySuccess = (): void => {
-        setShow(true)
-        if (!show) {
+    const [mailShow, setMailShow] = useState<boolean>(false)
+    const mailCopySuccess = (): void => {
+        setMailShow(true)
+        if (!mailShow) {
             setTimeout(() => {
-                setShow(false)
+                setMailShow(false)
             }, 4000)
         }
     }
@@ -40,14 +44,15 @@ function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
     return (
         <header className={clsx(styles.heroBanner)}>
             <div className={clsx(styles.heroTextContainer)}>
-                {!isMobileDevice && (
-                    <div className={styles.avatarArea}>
-                        <img
-                            src={favicon}
+                <Box sx={{ display: 'flex' }}>
+                    <Box m="auto">
+                        <Avatar
                             alt="qscbm187531"
+                            src={favicon}
+                            sx={{ width: 150, height: 150, m: 2 }}
                         />
-                    </div>
-                )}
+                    </Box>
+                </Box>
 
                 <div className={styles.heroTextArea}>
                     <Heading as="h1" className="hero__title">
@@ -67,13 +72,13 @@ function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
                         src={email}
                         link="qscbm187531@outlook.com"
                         isCopyBtn
-                        copySuccess={copySuccess}
+                        copySuccess={mailCopySuccess}
                     />
                 </div>
                 <Notification
-                    show={show}
-                    title="已复制到剪切板"
-                    changeShow={setShow}
+                    show={mailShow}
+                    title="邮箱已复制到剪切板"
+                    changeShow={setMailShow}
                 />
             </div>
         </header>

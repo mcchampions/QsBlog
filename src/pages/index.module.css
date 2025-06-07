@@ -4,12 +4,12 @@
     align-items: center;
     text-align: center;
     background-size: cover;
-    background: linear-gradient(#b1f4cf,#9890e3) center;
+    background: linear-gradient(#b1f4cf, #9890e3) center;
     height: 30vh;
 }
 
 [data-theme="dark"] .heroBanner {
-    background: linear-gradient(#000000,#434343) center;
+    background: linear-gradient(#000000, #434343) center;
 }
 
 .heroTextContainer {

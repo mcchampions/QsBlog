@@ -1,14 +1,19 @@
 import clsx from 'clsx';
+
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import BrowserOnly from '@docusaurus/BrowserOnly'
 
-import Notification from '@site/src/components/Notification';
-import {setClipBoardText} from '@site/src/utils/functions';
+import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import styles from './index.module.css';
+
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Notification from '@site/src/components/Notification';
+import {isMobile, setClipBoardText} from '@site/src/utils/functions';
+
 import React, {JSX, useState} from 'react';
+
+import styles from './index.module.css';
 
 // @ts-ignore
 import github from '@site/static/img/icons/github.png';
@@ -17,7 +22,11 @@ import email from '@site/static/img/icons/mail.png';
 // @ts-ignore
 import favicon from '@site/static/img/favicon.png';
 
-function HomepageHeader() {
+type HomepageHeaderProps = {
+    isMobileDevice: boolean
+}
+
+function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
     const [show, setShow] = useState<boolean>(false)
     const copySuccess = (): void => {
         setShow(true)
@@ -31,12 +40,14 @@ function HomepageHeader() {
     return (
         <header className={clsx(styles.heroBanner)}>
             <div className={clsx(styles.heroTextContainer)}>
-                <div className={styles.avatarArea}>
-                    <img
-                        src={favicon}
-                        alt="qscbm187531"
-                    />
-                </div>
+                {!isMobileDevice && (
+                    <div className={styles.avatarArea}>
+                        <img
+                            src={favicon}
+                            alt="qscbm187531"
+                        />
+                    </div>
+                )}
 
                 <div className={styles.heroTextArea}>
                     <Heading as="h1" className="hero__title">
@@ -70,17 +81,24 @@ function HomepageHeader() {
 }
 
 export default function Home() {
+
     const {siteConfig} = useDocusaurusContext();
-    return (
-        <Layout
-            title={`Hello from ${siteConfig.title}`}
-            description="Description will go into a meta tag in <head />">
-            <HomepageHeader/>
-            <main>
-                <HomepageFeatures/>
-            </main>
-        </Layout>
-    );
+
+    return (<BrowserOnly fallback={undefined}>
+        {() => {
+            const isMobileDevice: boolean = isMobile()
+            return (
+                <Layout
+                    title={`Hello from ${siteConfig.title}`}
+                    description="Description will go into a meta tag in <head />">
+                    <HomepageHeader isMobileDevice={isMobileDevice}/>
+                    <main>
+                        <HomepageFeatures/>
+                    </main>
+                </Layout>
+            );
+        }}
+    </BrowserOnly>)
 }
 
 function ContactMeBtn({

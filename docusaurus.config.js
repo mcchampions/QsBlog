@@ -82,7 +82,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/mcchampions/QsBlog',
+            href: 'https://github.com/mcchampions/QsWebsite',
             label: 'GitHub',
             position: 'right',
           },

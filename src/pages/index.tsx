@@ -24,6 +24,10 @@ import github from '@site/static/img/icons/github.png';
 // @ts-ignore
 import email from '@site/static/img/icons/mail.png';
 // @ts-ignore
+import qq from '@site/static/img/icons/qq.png';
+// @ts-ignore
+import bilibili from '@site/static/img/icons/bilibili.png';
+// @ts-ignore
 import favicon from '@site/static/img/favicon.png';
 
 type HomepageHeaderProps = {
@@ -31,25 +35,38 @@ type HomepageHeaderProps = {
 }
 
 function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
-    const [mailShow, setMailShow] = useState<boolean>(false)
+    const [show, setShow] = useState<boolean>(false)
+    const [message, setMessage] = useState<boolean>(false)
+    const {siteConfig} = useDocusaurusContext();
     const mailCopySuccess = (): void => {
-        setMailShow(true)
-        if (!mailShow) {
+        setShow(false);
+        setMessage("邮箱已复制成功");
+        setShow(true);
+        if (!show) {
             setTimeout(() => {
-                setMailShow(false)
+                setShow(false);
             }, 4000)
         }
     }
-    const {siteConfig} = useDocusaurusContext();
+    const qqCopySuccess = (): void => {
+        setShow(false);
+        setMessage("QQ号已复制成功");
+        setShow(true);
+        if (!show) {
+            setTimeout(() => {
+                setShow(false);
+            }, 4000)
+        }
+    }
     return (
         <header className={clsx(styles.heroBanner)}>
             <div className={clsx(styles.heroTextContainer)}>
-                <Box sx={{ display: 'flex' }}>
+                <Box sx={{display: 'flex'}}>
                     <Box m="auto">
                         <Avatar
                             alt="qscbm187531"
                             src={favicon}
-                            sx={{ width: 150, height: 150, m: 2 }}
+                            sx={{width: 150, height: 150, m: 2}}
                         />
                     </Box>
                 </Box>
@@ -74,11 +91,23 @@ function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
                         isCopyBtn
                         copySuccess={mailCopySuccess}
                     />
+                    <ContactMeBtn
+                        title="qq"
+                        src={qq}
+                        link="1309635304"
+                        isCopyBtn
+                        copySuccess={qqCopySuccess}
+                    />
+                    <ContactMeBtn
+                        title="哔哩哔哩"
+                        src={bilibili}
+                        link="https://space.bilibili.com/65959464"
+                    />
                 </div>
                 <Notification
-                    show={mailShow}
-                    title="邮箱已复制到剪切板"
-                    changeShow={setMailShow}
+                    show={show}
+                    title={message}
+                    changeShow={setShow}
                 />
             </div>
         </header>

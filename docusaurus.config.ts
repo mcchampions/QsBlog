@@ -80,7 +80,7 @@ const config: Config = {
                     type: 'dropdown',
                     sidebarId: 'docs',
                     position: 'left',
-                    label: 'Docs',
+                    label: '文档',
                     className: 'header-docs-link',
                     items: [
                         {
@@ -103,8 +103,16 @@ const config: Config = {
                 {
                     className: "header-blog-link",
                     to: '/blog',
-                    label: 'Blog',
+                    label: '博客',
                     position: 'left'
+                },
+                {
+                    type: 'dropdown',
+                    label: '工具',
+                    className: 'header-utilities-link',
+                    position: 'left',
+                    items: [
+                    ]
                 },
                 {
                     className: "header-github-link",

@@ -12,10 +12,11 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Notification from '@site/src/components/Notification';
-import {isMobile, setClipBoardText} from '@site/src/utils/functions';
+import {setClipBoardText} from '@site/src/utils/functions';
 
-import React, {JSX, useState} from 'react';
+import React, {JSX} from 'react';
+
+import {message} from 'antd';
 
 import styles from './index.module.css';
 
@@ -30,36 +31,27 @@ import bilibili from '@site/static/img/icons/bilibili.png';
 // @ts-ignore
 import favicon from '@site/static/img/favicon.png';
 
-type HomepageHeaderProps = {
-    isMobileDevice: boolean
-}
-
-function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
-    const [show, setShow] = useState<boolean>(false)
-    const [message, setMessage] = useState<boolean>(false)
+function HomepageHeader(HomepageHeaderProps) {
+    const [messageApi, contextHolder] = message.useMessage();
     const {siteConfig} = useDocusaurusContext();
+
+    const copySuccess = (message: string) => {
+        messageApi.open({
+            type: 'success',
+            content: message,
+        });
+    };
+
     const mailCopySuccess = (): void => {
-        setShow(false);
-        setMessage('邮箱已复制成功');
-        setShow(true);
-        if (!show) {
-            setTimeout(() => {
-                setShow(false);
-            }, 4000)
-        }
+        copySuccess('邮箱已复制成功');
     }
     const qqCopySuccess = (): void => {
-        setShow(false);
-        setMessage('QQ号已复制成功');
-        setShow(true);
-        if (!show) {
-            setTimeout(() => {
-                setShow(false);
-            }, 4000)
-        }
+        copySuccess('QQ号已复制成功');
     }
+
     return (
         <header className={clsx(styles.heroBanner)}>
+            {contextHolder}
             <div className={clsx(styles.heroTextContainer)}>
                 <Box sx={{display: 'flex'}}>
                     <Box m="auto">
@@ -104,11 +96,6 @@ function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
                         link="https://space.bilibili.com/65959464"
                     />
                 </div>
-                <Notification
-                    show={show}
-                    title={message}
-                    changeShow={setShow}
-                />
             </div>
         </header>
     );
@@ -120,12 +107,11 @@ export default function Home() {
 
     return (<BrowserOnly fallback={undefined}>
         {() => {
-            const isMobileDevice: boolean = isMobile()
             return (
                 <Layout
                     title={`Hello from ${siteConfig.title}`}
                     description="Description will go into a meta tag in <head />">
-                    <HomepageHeader isMobileDevice={isMobileDevice}/>
+                    <HomepageHeader/>
                     <main>
                         <HomepageFeatures/>
                     </main>

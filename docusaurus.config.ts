@@ -7,7 +7,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import {Config} from "@docusaurus/types";
 import type * as Preset from '@docusaurus/preset-classic';
-
+import remarkGfm from 'remark-gfm';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
@@ -95,6 +95,7 @@ const config: Config = {
                 // forceIgnoreNoIndex: true,
             }),
         ],
+        '@docusaurus/theme-live-codeblock',
     ],
 
     plugins: [

@@ -40,7 +40,7 @@ function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
     const {siteConfig} = useDocusaurusContext();
     const mailCopySuccess = (): void => {
         setShow(false);
-        setMessage("邮箱已复制成功");
+        setMessage('邮箱已复制成功');
         setShow(true);
         if (!show) {
             setTimeout(() => {
@@ -50,7 +50,7 @@ function HomepageHeader({isMobileDevice}: HomepageHeaderProps) {
     }
     const qqCopySuccess = (): void => {
         setShow(false);
-        setMessage("QQ号已复制成功");
+        setMessage('QQ号已复制成功');
         setShow(true);
         if (!show) {
             setTimeout(() => {

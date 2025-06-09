@@ -36,6 +36,9 @@ const config: Config = {
         defaultLocale: 'zh-Hans',
         locales: ['zh-Hans'],
     },
+    markdown: {
+        mermaid: true,
+    },
     presets: [
         [
             'classic',
@@ -54,6 +57,7 @@ const config: Config = {
                     },
                 },
                 docs: {
+                    remarkPlugins: [remarkGfm],
                     sidebarPath: './sidebars.ts',
                 },
                 blog: {

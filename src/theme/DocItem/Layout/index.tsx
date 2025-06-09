@@ -15,54 +15,53 @@ import type {Props} from '@theme/DocItem/Layout';
 
 import styles from './styles.module.css';
 //...
-import { FloatButton } from 'antd';
+import {FloatButton} from 'antd';
+
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
  */
 function useDocTOC() {
-  const {frontMatter, toc} = useDoc();
-  const windowSize = useWindowSize();
+    const {frontMatter, toc} = useDoc();
+    const windowSize = useWindowSize();
 
-  const hidden = frontMatter.hide_table_of_contents;
-  const canRender = !hidden && toc.length > 0;
+    const hidden = frontMatter.hide_table_of_contents;
+    const canRender = !hidden && toc.length > 0;
 
-  const mobile = canRender ? <DocItemTOCMobile /> : undefined;
+    const mobile = canRender ? <DocItemTOCMobile/> : undefined;
 
-  const desktop =
-    canRender && (windowSize === 'desktop' || windowSize === 'ssr') ? (
-      <DocItemTOCDesktop />
-    ) : undefined;
+    const desktop =
+        canRender && (windowSize === 'desktop' || windowSize === 'ssr') ? (
+            <DocItemTOCDesktop/>
+        ) : undefined;
 
-  return {
-    hidden,
-    mobile,
-    desktop,
-  };
+    return {
+        hidden,
+        mobile,
+        desktop,
+    };
 }
 
 export default function DocItemLayout({children}: Props): JSX.Element {
-  const docTOC = useDocTOC();
-  const {metadata} = useDoc();
-  return (
-    <div className="row">
-      <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
-        <ContentVisibility metadata={metadata} />
-        <DocVersionBanner />
-        <div className={styles.docItemContainer}>
-          <article>
-            <DocBreadcrumbs />
-            <DocVersionBadge />
-            {docTOC.mobile}
-            <DocItemContent>{children}</DocItemContent>
-            <DocItemFooter />
-          </article>
-          <DocItemPaginator />
+    const docTOC = useDocTOC();
+    const {metadata} = useDoc();
+    return (
+        <div className="row">
+            <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
+                <ContentVisibility metadata={metadata}/>
+                <DocVersionBanner/>
+                <div className={styles.docItemContainer}>
+                    <article>
+                        <DocBreadcrumbs/>
+                        <DocVersionBadge/>
+                        {docTOC.mobile}
+                        <DocItemContent>{children}</DocItemContent>
+                        <DocItemFooter/>
+                    </article>
+                    <DocItemPaginator/>
+                </div>
+            </div>
+            {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
+            <FloatButton.BackTop/>
         </div>
-      </div>
-      {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
-        <FloatButton.Group shape="circle" style={{right: 24}} className="article-float-buttons">
-            <FloatButton.BackTop visibilityHeight={0}/>
-        </FloatButton.Group>
-    </div>
-  );
+    );
 }

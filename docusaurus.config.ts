@@ -70,6 +70,8 @@ const config: Config = {
                     onInlineTags: 'warn',
                     onInlineAuthors: 'warn',
                     onUntruncatedBlogPosts: 'warn',
+                    blogSidebarTitle: '博客列表',
+                    blogSidebarCount: 'ALL',
                 },
                 theme: {
                     customCss: './src/css/custom.scss',

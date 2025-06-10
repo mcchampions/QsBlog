@@ -7,10 +7,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
-
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
-
+import CustomAvatar from '@site/src/components/CustomAvatar';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import {setClipBoardText} from '@site/src/utils/functions';
 
@@ -53,15 +50,11 @@ function HomepageHeader(HomepageHeaderProps) {
         <header className={clsx(styles.heroBanner)}>
             {contextHolder}
             <div className={clsx(styles.heroTextContainer)}>
-                <Box sx={{display: 'flex'}}>
-                    <Box m="auto">
-                        <Avatar
-                            alt="qscbm187531"
-                            src={favicon}
-                            sx={{width: 150, height: 150, m: 2}}
-                        />
-                    </Box>
-                </Box>
+                <CustomAvatar
+                    alt="qscbm187531"
+                    src={favicon}
+                    sx={{width: 166, height: 166, m: 2}}
+                />
 
                 <div className={styles.heroTextArea}>
                     <Heading as="h1" className="hero__title">

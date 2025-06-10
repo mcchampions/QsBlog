@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
 import {useWindowSize} from '@docusaurus/theme-common';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
@@ -14,8 +14,7 @@ import ContentVisibility from '@theme/ContentVisibility';
 import type {Props} from '@theme/DocItem/Layout';
 
 import styles from './styles.module.css';
-//...
-import {FloatButton} from 'antd';
+import {FloatButton} from "antd";
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -41,7 +40,7 @@ function useDocTOC() {
     };
 }
 
-export default function DocItemLayout({children}: Props): JSX.Element {
+export default function DocItemLayout({children}: Props): ReactNode {
     const docTOC = useDocTOC();
     const {metadata} = useDoc();
     return (

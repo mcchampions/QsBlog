@@ -133,7 +133,7 @@ const config: Config = {
                         },
                         {
                             type: 'doc',
-                            docId: 'mc-plugin-dev/index',
+                            docId: 'web-dev/index',
                             label: '个人网站建站指南',
                         },
                     ]

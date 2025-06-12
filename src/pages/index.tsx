@@ -26,6 +26,8 @@ import qq from '@site/static/img/icons/qq.png';
 // @ts-ignore
 import bilibili from '@site/static/img/icons/bilibili.png';
 // @ts-ignore
+import X from '@site/static/img/icons/X.png';
+// @ts-ignore
 import favicon from '@site/static/img/favicon.png';
 
 function HomepageHeader(HomepageHeaderProps) {
@@ -87,6 +89,11 @@ function HomepageHeader(HomepageHeaderProps) {
                         title="哔哩哔哩"
                         src={bilibili}
                         link="https://space.bilibili.com/65959464"
+                    />
+                    <ContactMeBtn
+                        title="X"
+                        src={X}
+                        link="https://x.com/qscbm187531L"
                     />
                 </div>
             </div>

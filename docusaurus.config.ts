@@ -101,12 +101,23 @@ const config: Config = {
     ],
 
     plugins: [
+        'docusaurus-plugin-image-zoom',
         'docusaurus-plugin-sass',
     ],
 
     themeConfig: {
+        zoom: {
+            selector: '.markdown > img',
+            background: {
+                light: 'rgb(255, 255, 255)',
+                dark: 'rgb(50, 50, 50)'
+            },
+            config: {
+                // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+            }
+        },
         // Replace with your project's social card
-        image: 'img/docusaurus-social-card.jpg',
+        image: 'img/favicon.png',
         navbar: {
             title: 'qscbm187531\'s Website',
             logo: {

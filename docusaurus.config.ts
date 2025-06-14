@@ -131,6 +131,7 @@ const config: Config = {
                     position: 'left',
                     label: '文档',
                     className: 'header-docs-link',
+                    to: '/docs',
                     items: [
                         {
                             type: 'doc',
